@@ -8,7 +8,6 @@ import android.provider.CallLog
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -70,15 +69,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         alarmbtn.setOnClickListener {
-            val intent = Intent(AlarmClock.ACTION_SHOW_ALARMS)
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "No app found to handle alarms", Toast.LENGTH_SHORT).show()
+            Intent(AlarmClock.ACTION_SHOW_ALARMS).also {
+                startActivity(it)
             }
         }
-
-
 
     }
 }
